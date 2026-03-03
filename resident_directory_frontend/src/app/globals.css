@@ -1,11 +1,21 @@
 @import "tailwindcss";
 
+/* === Retro Theme === */
 :root {
-  --color-primary: #000000;
-  --color-secondary: #FFFFFF;
-  --color-accent: #3B82F6;
-  --color-background: #FFFFFF;
+  --color-primary: #22223b;
+  --color-secondary: #4a4e69;
+  --color-accent: #3b82f6;
+  --color-accent2: #06b6d4;
+  --color-background: #f9fafb;
+  --color-surface: #FFFFFF;
+  --color-text: #111827;
+  --color-success: #06b6d4;
+  --color-error: #EF4444;
+  --color-border: #d1d5db;
+  --retro-font: 'IBM Plex Mono', 'Courier New', Courier, monospace;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -18,9 +28,255 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--color-background);
-  color: var(--color-primary);
+  color: var(--color-text);
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--retro-font), system-ui, -apple-system, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Retro Panels and Sections */
+.retro-panel {
+  background: var(--color-surface);
+  border: 2px solid var(--color-secondary);
+  border-radius: 8px;
+  margin: 1.25rem;
+  box-shadow: 0 4px 12px rgba(58, 71, 93, 0.15);
+  padding: 1.25rem;
+}
+
+.retro-panel-header {
+  margin-bottom: 1rem;
+  border-bottom: 2px dotted var(--color-accent);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.retro-list-content {
+  margin-top: 1rem;
+}
+
+.retro-list {
+  list-style: none;
+  padding: 0;
+}
+
+.retro-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px dashed var(--color-border);
+  padding: 0.5rem 0.75rem;
+  transition: background 0.2s;
+}
+.retro-list-item:hover,
+.retro-list-item:focus {
+  background: var(--color-accent2);
+  color: white;
+  outline: none;
+}
+
+.dir-list-name {
+  flex: 1;
+  font-weight: bold;
+}
+.dir-list-apt {
+  width: 5rem;
+}
+.dir-list-status {
+  width: 6rem;
+  text-align: center;
+}
+.status-active {
+  color: var(--color-success);
+}
+.status-pending {
+  color: var(--color-error);
+}
+
+.retro-loader {
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.retro-input-group {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+.retro-input-group label {
+  margin-bottom: 0.33rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.03em;
+}
+.retro-input {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: 2px solid var(--color-border);
+  border-radius: 5px;
+  transition: border 0.2s;
+}
+.retro-input:focus {
+  border: 2px solid var(--color-accent);
+  outline: none;
+}
+
+.retro-search-group {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.retro-form {
+  width: 100%;
+}
+
+.retro-btn, .retro-btn-secondary, .retro-btn-danger {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  padding: 0.35rem 1.15rem;
+  border-radius: 4px;
+  border: 2px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  cursor: pointer;
+  margin-right: 0.6rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  transition: 0.21s background, 0.21s color;
+  box-shadow: 1px 1.5px 0 #4a4e69;
+}
+.retro-btn-secondary {
+  background: var(--color-background);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent2);
+  box-shadow: none;
+}
+.retro-btn-danger {
+  background: var(--color-error);
+  border: 2px solid var(--color-error);
+  color: #fff;
+}
+
+/* Error Box */
+.retro-error {
+  margin-bottom: 1rem;
+  color: var(--color-error);
+}
+
+.retro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  background: var(--color-secondary);
+  color: white;
+  padding: 0 2vw;
+  font-size: 1.25rem;
+  font-family: var(--retro-font);
+}
+.retro-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--retro-font);
+  font-size: 1.3rem;
+}
+.retro-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Audit Log and Tables */
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.3rem;
+  font-family: var(--retro-font);
+}
+.retro-table thead {
+  background: var(--color-accent2);
+  color: white;
+}
+.retro-table th,
+.retro-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+}
+.retro-table tr:nth-child(even) {
+  background: #f0f5fa;
+}
+
+/* Resident Detail and Modal */
+.resident-detail .retro-detail-content > div {
+  margin-bottom: 0.9rem;
+}
+.retro-detail-actions {
+  margin-top: 1.1rem;
+}
+
+.retro-modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44, 44, 70, 0.69);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.retro-modal {
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent2);
+  border-radius: 8px;
+  box-shadow: 0 0px 14px 1px #070e22;
+  width: 90vw;
+  max-width: 410px;
+  padding: 1.5rem;
+  position: relative;
+}
+.retro-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.retro-modal-close {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--color-accent2);
+  cursor: pointer;
+  margin-left: 0.6rem;
+  margin-top: -0.6rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .retro-panel {
+    margin: 0.7rem;
+    padding: 0.9rem;
+  }
+  .retro-header {
+    flex-direction: column;
+    padding: 0.7rem 1vw;
+    font-size: 1.05rem;
+  }
+}
+@media (max-width: 600px) {
+  .retro-panel {
+    margin: 0.4rem;
+    padding: 0.5rem;
+  }
+  .retro-table th,
+  .retro-table td {
+    font-size: 0.99em;
+    padding: 0.25rem 0.25rem;
+  }
 }
